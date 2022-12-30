@@ -33,7 +33,7 @@ buton.addEventListener("click", () => {
 	let mH = h * 60;
 	/* calculate just minutes */
 	let m = numberEnd[1] - numberStart[1];
-	let min = mH + m - 45;
+	let min = mH + m - document.getElementById("break").value;
 	//transform minutes into hh:mm
 	let hours = Math.floor(min / 60);
 	let minutes = min % 60;
