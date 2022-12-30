@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+  height: 100vh;
+	margin: 0 auto;
+	padding: 10px 15px;
+	background-color: lightskyblue;
+}
+
+form p,
+form input,
+form label,
+form div {
+	margin: 5px auto;
+	padding: 5px;
+	width: 60%;
+	background-color: lightblue;
+	border: none;
+	text-align: center;
+	transition: 0.3s;
+	box-shadow: 2px 2px 5px black;
+}
+
+form input:hover,
+form label:hover,
+form div:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	opacity: 70%;
+}
