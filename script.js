@@ -16,13 +16,38 @@ buton.addEventListener("click", () => {
 		"December"
 	];
 
+	//declarare zilele anului in vederea alegerii datei
+
+	let data = document.getElementById("date");
+	let mesaj = document.createElement("h1");
+
+	var d = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday"
+	];
+	var M = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	];
+
 	var startTime = document.getElementById("startTime").value;
 	var finishTime = document.getElementById("finishTime").value;
 	var today = document.getElementById("date").value;
-
-	var day = today.substr(8, 2);
-	var month = today.substr(5, 2);
-	var year = today.substr(0, 4);
 
 	var start = startTime.split(":");
 	var end = finishTime.split(":");
@@ -52,13 +77,21 @@ buton.addEventListener("click", () => {
 		payMin = ratePerMin * 540 + ratePerMin * overTime * 1.25;
 	}
 
+	var day = new Date(data.value).getDay();
+	var month = new Date(data.value).getMonth();
+	var year = new Date(data.value).getFullYear();
+	var Day = today.substr(8, 2);
+
 	var result = document.createElement("p");
+
 	result.innerHTML =
 		"On " +
-		day +
+		d[day] +
 		" " +
-		luna[month - 1] +
+		M[month] +
 		" " +
+		Day +
+		" year " +
 		year +
 		" you worked " +
 		hours +
