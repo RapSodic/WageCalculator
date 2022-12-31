@@ -21,6 +21,7 @@ form div {
 	width: 60%;
 	background-color: lightblue;
 	border: none;
+	border-radius: 6px;
 	text-align: center;
 	transition: 0.3s;
 	box-shadow: 2px 2px 5px black;
