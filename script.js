@@ -39,7 +39,18 @@ buton.addEventListener("click", () => {
 	let minutes = min % 60;
 	//define pay rate and calculate daily wage
 	let rate = document.getElementById("rate").value;
-	let payMin = (rate / 60) * min;
+	let ratePerMin = rate / 60;
+	let payMin = ratePerMin * min;
+	let overTime = min - 540;
+
+	//function for overtime
+	if (min <= 540) {
+		console.log("basic");
+		payMin = ratePerMin * min;
+	} else {
+		console.log("9h basic " + overTime / 60 + " h overtime");
+		payMin = ratePerMin * 540 + ratePerMin * overTime * 1.25;
+	}
 
 	var result = document.createElement("p");
 	result.innerHTML =
@@ -56,8 +67,8 @@ buton.addEventListener("click", () => {
 		minutes +
 		" minutes" +
 		" and you will be paid " +
-		payMin.toFixed(2) +
-		" £";
+		payMin +
+		" pounds";
 	document.getElementById("form").appendChild(result);
 
 	let reset = document.getElementById("reset");
