@@ -95,12 +95,13 @@ buton.addEventListener("click", () => {
 			payMin = ratePerMin * min * 1.25;
 			break;
 		default:
-			work.innerHTML = "Normal Pay!";
 			if (min <= 540) {
 				console.log("basic");
+				work.innerHTML = "Basic Pay!";
 				payMin = ratePerMin * min;
 			} else {
-				console.log("9h basic " + overTime / 60 + " h overtime");
+				console.log("9h Basic Pay " + Math.floor(overTime/60) + " h and " + overTime % 60 + " minutes Overtime Pay!");
+				work.innerHTML = "9h Basic Pay " + Math.floor(overTime/60) + " h and " + overTime % 60 + " minutes Overtime Pay!";
 				payMin = ratePerMin * 540 + ratePerMin * overTime * 1.25;
 			}
 	}
