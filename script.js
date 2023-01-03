@@ -69,29 +69,71 @@ buton.addEventListener("click", () => {
 	let overTime = min - 540;
 
 	//function for overtime
-	if (min <= 540) {
+	/*if (min <= 540) {
 		console.log("basic");
 		payMin = ratePerMin * min;
 	} else {
 		console.log("9h basic " + overTime / 60 + " h overtime");
 		payMin = ratePerMin * 540 + ratePerMin * overTime * 1.25;
-	}
+	}*/
 
 	var day = new Date(data.value).getDay();
 	var month = new Date(data.value).getMonth();
 	var year = new Date(data.value).getFullYear();
 	var Day = today.substr(8, 2);
 
+	let daySufix;
+	let work = document.createElement("p");
+
+	switch (day) {
+		case 0:
+			work.innerHTML = "Sunday Pay!";
+			payMin = ratePerMin * min * 1.5;
+			break;
+		case 6:
+			work.innerHTML = "Saturday Pay!";
+			payMin = ratePerMin * min * 1.25;
+			break;
+		default:
+			work.innerHTML = "Normal Pay!";
+			if (min <= 540) {
+				console.log("basic");
+				payMin = ratePerMin * min;
+			} else {
+				console.log("9h basic " + overTime / 60 + " h overtime");
+				payMin = ratePerMin * 540 + ratePerMin * overTime * 1.25;
+			}
+	}
+
+	switch (Day) {
+		case "01":
+		case "21":
+		case "31":
+			daySufix = "-st";
+			break;
+		case "02":
+		case "22":
+			daySufix = "-nd";
+			break;
+		case "03":
+		case "23":
+			daySufix = "-rd";
+			break;
+		default:
+			daySufix = "-th";
+	}
+
 	var result = document.createElement("p");
 
 	result.innerHTML =
 		"On " +
 		d[day] +
-		" " +
+		" the " +
+		Day +
+		daySufix +
+		" of " +
 		M[month] +
 		" " +
-		Day +
-		" year " +
 		year +
 		" you worked " +
 		hours +
@@ -103,10 +145,12 @@ buton.addEventListener("click", () => {
 		payMin +
 		" pounds";
 	document.getElementById("form").appendChild(result);
+	document.getElementById("form").appendChild(work);
 
 	let reset = document.getElementById("reset");
 	reset.addEventListener("click", () => {
 		document.getElementById("form").reset();
 		document.getElementById("form").removeChild(result);
+		document.getElementById("form").removeChild(work);
 	});
 });
